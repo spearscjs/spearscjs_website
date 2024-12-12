@@ -51,6 +51,7 @@ ul li {
   background-color: inherit;
   color: inherit;
   border: none;
+  caret-color: transparent;
 }
 /* is this necessary? what does this do except clear defaults? */
 .input:focus {
