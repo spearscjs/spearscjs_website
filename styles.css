@@ -1,0 +1,90 @@
+/* Basic MS-DOS Theme */
+body {
+  background-color: black;
+  color: lime;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+main {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+
+}
+
+
+h2 {
+  font-size: 20px;
+  color: yellow;
+}
+
+.job-title {
+  font-style: italic;
+}
+
+
+ul li {
+  margin-bottom: 5px;
+}
+
+
+
+
+.input {
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  border: 2px solid #a50505;
+  width: initial;
+}
+
+/* is this necessary? what does this do except clear defaults? */
+.input:focus {
+  outline: #66ff66;
+  border: #66ff66;
+  border: 2px solid #a50505;
+  width: fit-content;
+}
+
+.footer {
+  text-align: left;
+  padding-top: 20px;
+  color: #66ff66; /* Bright green text */
+}
+
+.cmd-prompt {
+  display: block;
+}
+
+.cmd-prompt span,
+.cmd-prompt input {
+    display: inline-block; /* Aligns the elements side by side */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
+
+#cmd_out {
+  border: 1px solid #66ff66; /* Green border */
+  margin-bottom: 2em;
+  display: block;
+  padding: 1em;
+  box-sizing: border-box;
+  white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */
+  word-wrap: break-word; /* Ensure long words break properly */
+  box-sizing: border-box; /* Include border in the element's total width/height */
+}
