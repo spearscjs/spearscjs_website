@@ -2,9 +2,11 @@
 let isClearActive = false;
 let default_cmd_out;
 
+const inputBox = document.getElementById("commandInput");
+const cmdDiv = document.getElementById("commandDiv");
 
 // Function to handle the command input
-document.getElementById("commandInput").addEventListener("keydown", function (event) {
+inputBox.addEventListener("keydown", function (event) {
   // Ensure the input is only processed when the user presses "Enter"
   if (isClearActive) {
     // Show the experience sections again
@@ -15,12 +17,19 @@ document.getElementById("commandInput").addEventListener("keydown", function (ev
       const command = document.getElementById("commandInput").value.toLowerCase().trim();
       processCommand(command);
       document.getElementById("commandInput").value = '';  // Clear the input field
+      autoResizeInput(); // Refresh text box size
       event.preventDefault(); // Prevent form submission or default Enter key behavior
     }
   }
   
 });
 
+
+// Add listener for any kind of input on input box
+inputBox.addEventListener("input", () => autoResizeInput());
+
+// Add listener that focuses the input box on clicking the command div
+cmdDiv.addEventListener("click", () => inputBox.focus());
 
 
 // Function to process different commands
@@ -79,3 +88,18 @@ window.onload = function() {
    default_cmd_out = document.querySelector("#cmd_out").textContent;
 }
 
+// Automatically resizes the input element to its contents
+// This should also be placed anywhere the script itself
+// is changing the contents of the text box.
+function autoResizeInput() {
+    let inputContents = inputBox.value;
+    let inputLength = inputContents.length;
+
+    /* TODO: properly implement character limit
+    if(inputLength >= 32) {
+        inputContents = '';
+        inputLength = inputContents.length;
+    }
+    */
+    inputBox.style.width = inputLength + "ch";
+}
