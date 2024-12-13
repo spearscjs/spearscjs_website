@@ -4,6 +4,7 @@ let default_cmd_out;
 
 const inputBox = document.getElementById("commandInput");
 const cmdDiv = document.getElementById("commandDiv");
+const submitButton = document.getElementById("submit-contact");
 
 // Function to handle the command input
 inputBox.addEventListener("keydown", function (event) {
@@ -31,6 +32,8 @@ inputBox.addEventListener("input", () => autoResizeInput());
 // Add listener that focuses the input box on clicking the command div
 cmdDiv.addEventListener("click", () => inputBox.focus());
 
+// Add listener for form submission
+submitButton.addEventListener("click", (event) => handleSubmit(event));
 
 // Function to process different commands
 function processCommand(command) {
@@ -102,4 +105,40 @@ function autoResizeInput() {
     }
     */
     inputBox.style.width = inputLength + "ch";
+}
+
+// Handler for the contact form submission
+async function handleSubmit(event) {
+    event.preventDefault();
+
+    const nameInput = document.getElementById("form-name");
+    const emailInput = document.getElementById("form-email");
+    const messageInput = document.getElementById("form-message");
+
+    const formName = nameInput.value;
+    const formEmail = emailInput.value;
+    const formMessage = messageInput.value;
+
+    try{
+        const response = await fetch("http://localhost:3000/submit-form", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            // TODO: prettify output
+            body: JSON.stringify({"name": formName, "email": formEmail, "message": formMessage}),
+        });
+
+        // TODO: add a better response to a submission
+        if(response.status === 200) {
+            nameInput.value = "";
+            emailInput.value = "";
+            messageInput.value = "";
+        } else {
+            alert("Submission unsuccessful!");
+        }
+    } catch (error) {
+        alert("Submission unsuccessful!");
+    }
+
 }
