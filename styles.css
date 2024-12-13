@@ -42,52 +42,44 @@ ul li {
 }
 
 
-
-
-/* Consider removing these two input entries.
-   Not sure what they do, they seem useless.
- */
-.input {
-  background-color: inherit;
-  color: inherit;
-  border: none;
-  caret-color: transparent;
-}
-/* is this necessary? what does this do except clear defaults? */
-.input:focus {
-  outline: #66ff66;
-  border: #66ff66;
-}
-/**/
-
-
 .footer {
   text-align: left;
   padding-top: 20px;
   color: #66ff66; /* Bright green text */
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .cmd-prompt {
   display: block;
 }
 
+/* This file should probably be cleaned up from
+   this point down. Lots of potentially overlapping
+   properties. */
+
 .cmd-prompt span,
 .cmd-prompt input,
 .cmd-prompt p {
     display: inline-block; /* Aligns the elements side by side */
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .cmd-prompt input {
   width: 0; /* Initial width is zero as the input expands */
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  caret-color: transparent;
+  outline: #66ff66;
+  border: #66ff66;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .cmd-prompt p {
   position: relative;
   animation: blinker 1s linear infinite;
   border: none;
-  padding-top: 2em;
+  padding-top: 2rem;
 }
 
 @keyframes blinker {
@@ -101,10 +93,63 @@ ul li {
 
 #cmd_out {
   border: 1px solid #66ff66; /* Green border */
-  margin-bottom: 2em;
+  margin-bottom: 2rem;
   display: block;
-  padding: 1em;
+  padding: 1rem;
   white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */
   word-wrap: break-word; /* Ensure long words break properly */
-  box-sizing: border-box; /* Include border in the element's total width/height */
+  box-sizing: border-box; /* Include border in the elrement's total width/height */
 }
+
+.contact-section {
+  display: inline-grid;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  padding: 1rem 1rem;
+  border: 1px solid #66ff66;
+  width: 100%;
+  grid-column-gap: 2rem;
+  grid-row-gap: 1rem;
+}
+
+.contact-section input,
+.contact-section button {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 1rem 1rem;
+  background-color: inherit;
+  border: 1px solid #66ff66;
+  width: auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.contact-section input {
+  color: grey;
+}
+
+.contact-section input:focus {
+  border: 1px solid green;
+}
+
+.contact-section input {
+  grid-row: 2;
+}
+
+#form-message {
+  grid-row: 3;
+  width: 200%;
+}
+
+#submit-contact {
+  grid-row: 4;
+  background-color: #66ff66;
+}
+
+#submit-contact:hover {
+  background-color: green;
+  border: 1px solid green;
+}
+
+
+
