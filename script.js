@@ -119,21 +119,37 @@ async function handleSubmit(event) {
     const formEmail = emailInput.value;
     const formMessage = messageInput.value;
 
-    try{
+    try {
+        // TODO: Important: this fetch needs to be changed to point to the actual website
+        let errors;
         const response = await fetch("http://localhost:3000/submit-form", {
             headers: {
                 "Content-Type": "application/json",
             },
             method: "POST",
-            // TODO: prettify output
             body: JSON.stringify({"name": formName, "email": formEmail, "message": formMessage}),
-        });
+        })
+
+        errors = await response.json()
+            .then(data => errors = data);
+
 
         // TODO: add a better response to a submission
+
         if(response.status === 200) {
-            nameInput.value = "";
-            emailInput.value = "";
-            messageInput.value = "";
+            if (errors.response === "success") {
+                nameInput.value = "";
+                emailInput.value = "";
+                messageInput.value = "";
+                // Reset colors to original green if they were changed
+                nameInput.style.border = "1px solid #66ff66";
+                emailInput.style.border = "1px solid #66ff66";
+                messageInput.style.border = "1px solid #66ff66";
+            } else {
+                if (errors.hasOwnProperty("name")) nameInput.style.border = "1px solid red";
+                if (errors.hasOwnProperty("email")) emailInput.style.border = "1px solid red";
+                if (errors.hasOwnProperty("message")) messageInput.style.border = "1px solid red";
+            }
         } else {
             alert("Submission unsuccessful!");
         }
