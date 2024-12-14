@@ -79,7 +79,6 @@ ul li {
   position: relative;
   animation: blinker 1s linear infinite;
   border: none;
-  padding-top: 2rem;
 }
 
 @keyframes blinker {
@@ -93,7 +92,6 @@ ul li {
 
 #cmd_out {
   border: 1px solid #66ff66; /* Green border */
-  margin-bottom: 2rem;
   display: block;
   padding: 1rem;
   white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */
@@ -104,7 +102,6 @@ ul li {
 .contact-section {
   display: inline-grid;
   margin-top: 6rem;
-  margin-bottom: 2rem;
   padding: 1rem 1rem;
   border: 1px solid #66ff66;
   width: 100%;
