@@ -31,4 +31,19 @@ const validateEmail = (email) => {
     );
 };
 
-module.exports = { validateInput };
+// Validator function for reCAPTCHA
+async function validateReCAPTCHA(token, secret) {
+    const reCAPTCHAResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        method: "POST",
+        body: 'secret=' + secret + "&response=" + token
+    });
+
+    let result;
+    result = await reCAPTCHAResponse.json()
+        .then(data => result = data.success);
+
+    return result;
+}
+
+module.exports = { validateInput, validateReCAPTCHA };
