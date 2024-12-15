@@ -1,9 +1,10 @@
 const express = require('express');
 const fs = require("fs");
+require('dotenv').config(); 
 const validator = require("./validator.js")
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 
-
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
@@ -16,11 +17,13 @@ if (!fs.existsSync(dir)){
 
 // Built in express middleware to parse JSON objects
 app.use(express.json());
+app.use(cors());
 
 app.post('/submit-form', async (req, res) => {
     const dateNow = new Date();
 
     // reCAPTCHA validation
+    console.log(RECAPTCHA_SECRET_KEY)
     let captchaResult = await validator.validateReCAPTCHA(req.body.token, RECAPTCHA_SECRET_KEY);
     if(!captchaResult){
         console.log(dateNow.toISOString() + " : invalid captcha result");

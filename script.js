@@ -22,7 +22,7 @@ inputBox.addEventListener("keydown", function (event) {
       event.preventDefault(); // Prevent form submission or default Enter key behavior
     }
   }
-  
+
 });
 
 
