@@ -7,6 +7,7 @@ body {
   font-size: 16px;
   width: 80%;
   margin: auto;
+  border: 1px solid #66ff66;
 }
 
 h1 {
@@ -20,15 +21,17 @@ ol {
 
 
 
-nav {
-  text-align: center;
-}
 
 nav ul {
   list-style-type: none;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-evenly; 
+  padding: 0;
+  border-bottom: 1px solid #66ff66;
 }
+
+
+
 
 .clear-section {
   display: none;
@@ -36,7 +39,7 @@ nav ul {
 
 
 
-#about {
+#about_section {
   display: block;
 }
 
@@ -146,7 +149,7 @@ ul li {
 
 
 
-.contact-section {
+#contact_section {
   padding: 1rem 1rem;
   border: 1px solid #66ff66;
   width: 100%;
@@ -154,11 +157,10 @@ ul li {
   grid-row-gap: 1rem;
 }
 
-.contact-section input,
-.contact-section button {
+#contact_section input,
+#contact_section button {
   font-family: 'Courier New', Courier, monospace;
   padding: 1rem 1rem;
-  background-color: inherit;
   border: 1px solid #66ff66;
   width: auto;
   -webkit-transition: 0.5s;
@@ -166,15 +168,23 @@ ul li {
   outline: none;
 }
 
-.contact-section input {
-  color: grey;
+#contact_section input {
+  background-color: black;
+  color: #66ff66
 }
 
-.contact-section input:focus {
+#contact_section button{
+  color: black;
+  background-color: #66ff66
+}
+
+
+
+#contact_section input:focus {
   border: 1px solid green;
 }
 
-.contact-section input {
+#contact_section input {
   grid-row: 2;
 }
 
@@ -185,7 +195,7 @@ ul li {
 
 #submit-contact {
   grid-row: 4;
-  background-color: #66ff66;
+  color: #66ff66;
 }
 
 #submit-contact:hover {
