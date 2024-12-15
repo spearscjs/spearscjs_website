@@ -60,8 +60,8 @@ ul li {
 .cmd-prompt span,
 .cmd-prompt input,
 .cmd-prompt p {
-    display: inline-block; /* Aligns the elements side by side */
-    font-size: 1rem;
+  display: inline-block; /* Aligns the elements side by side */
+  font-size: 1rem;
 }
 
 .cmd-prompt input {
@@ -135,7 +135,7 @@ ul li {
 
 #form-message {
   grid-row: 3;
-  width: 200%;
+  width: 80%;
 }
 
 #submit-contact {
@@ -148,5 +148,6 @@ ul li {
   border: 1px solid green;
 }
 
-
-
+#recaptcha-container {
+  grid-row: 4;
+}

@@ -24,11 +24,25 @@ function validateInput(request) {
     return errors;
 }
 
-// I stole this function and its regex from stackoverflow
 const validateEmail = (email) => {
     return email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 };
 
-module.exports = { validateInput };
+// Validator function for reCAPTCHA
+async function validateReCAPTCHA(token, secret) {
+    const reCAPTCHAResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        method: "POST",
+        body: 'secret=' + secret + "&response=" + token
+    });
+
+    let result;
+    result = await reCAPTCHAResponse.json()
+        .then(data => result = data.success);
+
+    return result;
+}
+
+module.exports = { validateInput, validateReCAPTCHA };

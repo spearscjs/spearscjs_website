@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curtis Spears</title>
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
 <header class="header">
@@ -12,50 +13,56 @@
 </header>
 
 <main>
-    <ol>
-        <section class="clear_section">
-            <h2>Global Atlantic Financial Group</h2>
-            <p class="job-title">Data Engineer (Dec 2022 - Present)</p>
-            <ul>
-                <li>Work with actuarial and financial teams to understand the behavior and use of the data. Create ETL pipelines and reporting layers to be ingested downstream.</li>
-                <li>Migrations to AWS ecosystem from various technologies</li>
-                <li>Design database, tables, views, and stored procedures using Redshift, Hive, Hadoop, SybaseIQ, S3, and custom python modules</li>
-                <li>Automate ETL pipelines using Terraform, Lambda, Glue, Ctrl-M, Java, MYSQL, Bash, Powershell</li>
-                <li>Process large scale datasets using AWS GLUE jobs using Scala, Pyspark</li>
-                <li>Prepare reporting extracts and  data quality checks.</li>
-            </ul>
-        </section>
+    <section class = "clear_section job_section"> 
+        <ol id = "job_list">
+            <li class = "job_entry">
+                <h2>Global Atlantic Financial Group</h2>
+                <p class="job-title">Data Engineer (Dec 2022 - Present)</p>
+                <ul>
+                    <li>Work with actuarial and financial teams to understand the behavior and use of the data. Create ETL pipelines and reporting layers to be ingested downstream.</li>
+                    <li>Migrations to AWS ecosystem from various technologies</li>
+                    <li>Design database, tables, views, and stored procedures using Redshift, Hive, Hadoop, SybaseIQ, S3, and custom python modules</li>
+                    <li>Automate ETL pipelines using Terraform, Lambda, Glue, Ctrl-M, Java, MYSQL, Bash, Powershell</li>
+                    <li>Process large scale datasets using AWS GLUE jobs using Scala, Pyspark</li>
+                    <li>Prepare reporting extracts and  data quality checks.</li>
+                </ul>
+            </li>
 
-        <section class="clear_section">
-            <h2>Freelance Engineer</h2>
-            <p class="job-title">(Jul 2021 - Dec 2022)</p>
-            <ul>
-                <li>Recover corrupted data and negotiate contracts with third parties for database management tools</li>
-                <li>Migrate data for upgraded POS systems</li>
-                <li>Implement a CRUD interface for employees to manage users via Active Directory and Oﬃce 365</li>
-                <li>Implement various scripts to help customer support employees manage users more eﬃciently</li>
-                <li>Migrate data to a Microsoft Azure Server, conﬁgure Oﬃce365 accounts for employees</li>
-                <li>Setup on-premise and oﬀ-site backups for a shared ﬁle server</li>
-            </ul>
-        </section>
+            <li class = "job_entry">
+                <h2>Freelance Engineer</h2>
+                <p class="job-title">(Jul 2021 - Dec 2022)</p>
+                <ul>
+                    <li>Recover corrupted data and negotiate contracts with third parties for database management tools</li>
+                    <li>Migrate data for upgraded POS systems</li>
+                    <li>Implement a CRUD interface for employees to manage users via Active Directory and Oﬃce 365</li>
+                    <li>Implement various scripts to help customer support employees manage users more eﬃciently</li>
+                    <li>Migrate data to a Microsoft Azure Server, conﬁgure Oﬃce365 accounts for employees</li>
+                    <li>Setup on-premise and oﬀ-site backups for a shared ﬁle server</li>
+                </ul>
+            </li>
 
-        <section class="clear_section">
-            <h2>Harley Parts Plus</h2>
-            <p class="job-title">Machinist (Jun 2012 - Mar 2016)</p>
-            <ul>
-                <li>Program and operate 5 axis CNC machines to manufacture aerospace parts to design speciﬁcations</li>
-                <li>Schedule various jobs to ensure manufactured parts meet required customer deadlines</li>
-                <li>Train new employees, emphasizing attention to detail and following standardized procedures</li>
-            </ul>
-        </section>
-    </ol>
+            <li class = "job_entry">
+                <h2>Harley Parts Plus</h2>
+                <p class="job-title">Machinist (Jun 2012 - Mar 2016)</p>
+                <ul>
+                    <li>Program and operate 5 axis CNC machines to manufacture aerospace parts to design speciﬁcations</li>
+                    <li>Schedule various jobs to ensure manufactured parts meet required customer deadlines</li>
+                    <li>Train new employees, emphasizing attention to detail and following standardized procedures</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
 
-    <section class="contact-section">
+    <section class="contact-section clear_section">
         <h1>Contact</h1>
-            <input id="form-name" type="text" class="input" placeholder="name">
-            <input id="form-email" type="email" class="input" placeholder="email">
-            <input id="form-message" type="text" class="input" placeholder="message">
-            <button id="submit-contact" class="submit">submit</button>
+        <input id="form-name" type="text" class="input" placeholder="name">
+        <input id="form-email" type="email" class="input" placeholder="email">
+        <input id="form-message" type="text" class="input" placeholder="message">
+        <button id="submit-contact" class="submit">submit</button>
+        <div id="recaptcha-container"></div>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                async defer>
+        </script>
     </section>
 </main>
 
@@ -66,8 +73,17 @@
     </div>
 </footer>
 
-
-
+<!--SCRIPTS------------------------------------------------------------------>
 <script src="script.js"></script>
+<script type="text/javascript">
+    var onloadCallback = function() {
+        grecaptcha.render('recaptcha-container', {
+            'sitekey' : '6LfGPZsqAAAAAAi6-3qjt2M0w3fdZ35yB_ffC-aI',
+            'theme': 'dark'
+        });
+    };
+</script>
+
+
 </body>
 </html>

@@ -22,7 +22,7 @@ inputBox.addEventListener("keydown", function (event) {
       event.preventDefault(); // Prevent form submission or default Enter key behavior
     }
   }
-  
+
 });
 
 
@@ -110,6 +110,14 @@ function autoResizeInput() {
 // Handler for the contact form submission
 async function handleSubmit(event) {
     event.preventDefault();
+    // Fetch reCAPTCHA response
+    const reCAPTCHAResponse = grecaptcha.getResponse();
+    // Force captcha completion
+    if (!reCAPTCHAResponse) {
+        alert("Please complete reCAPTCHA!");
+        return;
+    }
+    grecaptcha.reset();
 
     const nameInput = document.getElementById("form-name");
     const emailInput = document.getElementById("form-email");
@@ -127,7 +135,7 @@ async function handleSubmit(event) {
                 "Content-Type": "application/json",
             },
             method: "POST",
-            body: JSON.stringify({"name": formName, "email": formEmail, "message": formMessage}),
+            body: JSON.stringify({"token" : reCAPTCHAResponse, "name": formName, "email": formEmail, "message": formMessage}),
         })
 
         errors = await response.json()
@@ -156,5 +164,5 @@ async function handleSubmit(event) {
     } catch (error) {
         alert("Submission unsuccessful!");
     }
-
 }
+

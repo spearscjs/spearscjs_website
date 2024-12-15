@@ -1,8 +1,10 @@
 const express = require('express');
 const fs = require("fs");
+require('dotenv').config(); 
 const validator = require("./validator.js")
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 
-
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
@@ -15,10 +17,20 @@ if (!fs.existsSync(dir)){
 
 // Built in express middleware to parse JSON objects
 app.use(express.json());
+app.use(cors());
 
-app.post('/submit-form', (req, res) => {
+app.post('/submit-form', async (req, res) => {
     const dateNow = new Date();
 
+    // reCAPTCHA validation
+    console.log(RECAPTCHA_SECRET_KEY)
+    let captchaResult = await validator.validateReCAPTCHA(req.body.token, RECAPTCHA_SECRET_KEY);
+    if(!captchaResult){
+        console.log(dateNow.toISOString() + " : invalid captcha result");
+        return res.json({error: "invalid captcha result"});
+    }
+
+    // Input validation
     const results = validator.validateInput(req);
     if (Object.keys(results).length !== 0) {
         console.log(dateNow.toISOString() + ": invalid request received");
@@ -31,7 +43,6 @@ app.post('/submit-form', (req, res) => {
     const message = req.body.message.trim();
 
     console.log(dateNow.toISOString() + ": request received");
-    console.log(req.body);
     const dateString = dateNow.getFullYear() + '-' + (dateNow.getMonth() + 1) + '-' + dateNow.getDate() + "_" + dateNow.getHours() + '-' +
         // This ternary will add a leading zero in front of single-digit minutes
         (dateNow.getMinutes() < 10 ? '0' : '') + dateNow.getMinutes();
