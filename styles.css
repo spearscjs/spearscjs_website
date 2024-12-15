@@ -130,8 +130,10 @@ ul li {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  
+  justify-content: space-evenly;
 }
+
+
 
 .skills-list img {
   width: 150px;
@@ -151,8 +153,6 @@ ul li {
 
 #contact_section {
   padding: 1rem 1rem;
-  border: 1px solid #66ff66;
-  width: 100%;
   grid-column-gap: 2rem;
   grid-row-gap: 1rem;
 }

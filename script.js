@@ -161,6 +161,7 @@ async function handleSubmit(event) {
                 emailInput.value = "";
                 messageInput.value = "";
                 // Reset colors to original green if they were changed
+                // GIVE SOME INDICATION OF A SENT MESSAGE
                 nameInput.style.border = "1px solid #66ff66";
                 emailInput.style.border = "1px solid #66ff66";
                 messageInput.style.border = "1px solid #66ff66";
