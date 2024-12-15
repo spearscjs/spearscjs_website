@@ -1,2 +1,4 @@
 /form-submissions/
 /.env
+.*
+/node_modules
