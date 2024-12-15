@@ -13,7 +13,7 @@
     <nav>
         <ul>
             <li><a data-section = "about" onclick="switchSection(this)">About</a></li>
-            <li><a data-section = "skills"  onclick="switchSection(this)">Skills</a></li>
+            <li><a id = "skills_link" data-section = "skills"  onclick="switchSection(this)">Skills</a></li>
             <li><a data-section = "experience"  onclick="switchSection(this)">Experience</a></li>
             <li><a data-section = "contact"  onclick="switchSection(this)">Contact</a></li>
         </ul>
@@ -194,7 +194,7 @@
     </section>
 </main>
 
-<footer class="footer">
+<footer>
     <span id="cmd_out">(c) 2024 SpearsCJS. All rights reserved.</span>
     <div class="cmd-prompt input-wrapper" id="commandDiv">
         <span >C:\></span><input type="text" id="commandInput" class="input" placeholder="" autofocus><p>_</p>

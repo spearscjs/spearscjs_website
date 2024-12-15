@@ -45,6 +45,18 @@ function processCommand(command) {
     case "clear":
         clearScreen();
         break;
+    case "about":
+        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        break;
+    case "skills":
+        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        break;
+    case "experience":
+        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        break;
+    case "contact":
+        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        break;
     default:
         commandPrompt.textContent = "Command not recognized";
         break;
@@ -54,7 +66,7 @@ function processCommand(command) {
 // Display help instructions
 function displayHelp() {
   const commandPrompt = document.querySelector("#cmd_out");
-  commandPrompt.textContent = "Commands: help, clear";
+  commandPrompt.textContent = "Commands: help, clear, about, skills, experience, contact";
 }
 
 // Clear the screen content (but keep the terminal visible)
