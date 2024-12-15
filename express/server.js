@@ -1,10 +1,10 @@
 const express = require('express');
 const fs = require("fs");
-require('dotenv').config(); 
-const validator = require("./validator.js")
+const cors = require('cors');
+const validator = require("./validator.js");
+require('dotenv').config();
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 
-const cors = require('cors');
 
 const app = express();
 const port = 3000;
@@ -23,7 +23,6 @@ app.post('/submit-form', async (req, res) => {
     const dateNow = new Date();
 
     // reCAPTCHA validation
-    console.log(RECAPTCHA_SECRET_KEY)
     let captchaResult = await validator.validateReCAPTCHA(req.body.token, RECAPTCHA_SECRET_KEY);
     if(!captchaResult){
         console.log(dateNow.toISOString() + " : invalid captcha result");
@@ -60,4 +59,7 @@ app.post('/submit-form', async (req, res) => {
     res.json({"response" : "success"});
 });
 
-app.listen(port, () => console.log('Express server listening on port ' + port));
+let isSecretPresent = RECAPTCHA_SECRET_KEY ? "yes" : "no";
+
+app.listen(port, () => console.log('Express server listening on port ' + port + "\nreCAPTCHA secret key present: "
+    + isSecretPresent));
