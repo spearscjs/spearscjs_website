@@ -89,9 +89,7 @@ function clearScreen() {
 function resetExperience() {
   // Show sections
   const sections = document.querySelectorAll('.clear_section');
-  sections.forEach(section => {
-      section.style.display = 'block';
-  });
+  document.querySelector('nav ul li a[data-section="about"').click(); // TODO -- FIX THIS --- GO BACK TO PAGE USER WAS AT
   // Update prompt
   const commandPrompt = document.querySelector("#cmd_out");
   commandPrompt.textContent = default_cmd_out;
