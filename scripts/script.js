@@ -38,6 +38,7 @@ submitButton.addEventListener("click", (event) => handleSubmit(event));
 // Function to process different commands
 function processCommand(command) {
   const commandPrompt = document.querySelector("#cmd_out");
+  console.log(command)
   switch (command) {
     case "help":
         displayHelp();
@@ -46,16 +47,16 @@ function processCommand(command) {
         clearScreen();
         break;
     case "about":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     case "skills":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     case "experience":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     case "contact":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     default:
         commandPrompt.textContent = "Command not recognized";
@@ -89,7 +90,7 @@ function clearScreen() {
 function resetExperience() {
   // Show sections
   const sections = document.querySelectorAll('.clear-section');
-  document.querySelector('nav ul li a[data-section="about"]').click(); // TODO -- FIX THIS --- GO BACK TO PAGE USER WAS AT
+  document.querySelector('nav ul li a[data-section="about_section"]').click(); // TODO -- FIX THIS --- GO BACK TO PAGE USER WAS AT
   // Update prompt
   const commandPrompt = document.querySelector("#cmd_out");
   commandPrompt.textContent = default_cmd_out;
@@ -160,6 +161,7 @@ async function handleSubmit(event) {
                 emailInput.value = "";
                 messageInput.value = "";
                 // Reset colors to original green if they were changed
+                // GIVE SOME INDICATION OF A SENT MESSAGE
                 nameInput.style.border = "1px solid #66ff66";
                 emailInput.style.border = "1px solid #66ff66";
                 messageInput.style.border = "1px solid #66ff66";
