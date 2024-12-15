@@ -90,13 +90,13 @@ ul li {
 }
 
 .cmd-prompt input {
+  outline: none;
+  border: none;
   width: 0; /* Initial width is zero as the input expands */
   background-color: inherit;
   color: inherit;
   border: none;
   caret-color: transparent;
-  outline: #66ff66;
-  border: #66ff66;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -116,7 +116,7 @@ ul li {
 }
 
 #cmd_out {
-  border: 1px solid #66ff66; /* Green border */
+  border-top: 1px solid #66ff66;
   display: block;
   padding: 1rem;
   white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */

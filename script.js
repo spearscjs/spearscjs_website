@@ -38,6 +38,7 @@ submitButton.addEventListener("click", (event) => handleSubmit(event));
 // Function to process different commands
 function processCommand(command) {
   const commandPrompt = document.querySelector("#cmd_out");
+  console.log(command)
   switch (command) {
     case "help":
         displayHelp();
@@ -46,16 +47,16 @@ function processCommand(command) {
         clearScreen();
         break;
     case "about":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     case "skills":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     case "experience":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     case "contact":
-        document.querySelector(`nav ul li a[data-section=${command}]`).click();
+        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
         break;
     default:
         commandPrompt.textContent = "Command not recognized";
