@@ -166,3 +166,32 @@ async function handleSubmit(event) {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+// NAVBAR FUNCTIONALITY ***************************************************************************************
+
+function switchSection(navElement) {
+    // Get the ID of the clicked navbar element
+    const sectionId = navElement.getAttribute('data-section');
+    console.log(sectionId)
+
+    // Hide all sections
+    const sections = document.querySelectorAll('.clear_section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Switch on the sectionId to determine which section to show
+    document.getElementById(sectionId).style.display = 'block';
+
+}
+

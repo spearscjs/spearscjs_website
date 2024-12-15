@@ -10,20 +10,28 @@
 <body>
 <header class="header">
     <h1 class="title">Curtis Spears Website</h1>
+    <nav>
+        <ul>
+            <li><a data-section = "about" onclick="switchSection(this)">About</a></li>
+            <li><a data-section = "skills"  onclick="switchSection(this)">Skills</a></li>
+            <li><a data-section = "experience"  onclick="switchSection(this)">Experience</a></li>
+            <li><a data-section = "contact"  onclick="switchSection(this)">Contact</a></li>
+        </ul>
+    </nav>
+    
 </header>
 
 
 <main>
 
-    <section class="about-section clear_section">
+    <section id = "about" class="about-section clear_section">
         <h1>Hi There!</h1>
         <img id="portrait" src="images/handsome_squidward.png" alt="Portrait Pic" />
         <p>I like coding and sh</p>
     </section>
 
 
-
-    <section class="clear_section skills_section">
+    <section id = "skills" class="clear_section skills_section">
         <h1 class="section-header">SKILLS</h1>
         <!-- Programming Languages Section -->
         <div class="skill-category">
@@ -132,7 +140,7 @@
     
     
 
-    <section class = "clear_section experience_section"> 
+    <section id = "experience" class = "clear_section experience_section"> 
         <h1 class="section-header">EXPERIENCE</h1>
         <ol id = "job_list">
             <li class = "job_entry">
@@ -173,7 +181,7 @@
         </ol>
     </section>
 
-    <section class="contact-section clear_section">
+    <section id = "contact" class="contact-section clear_section">
         <h1>Contact</h1>
         <input id="form-name" type="text" class="input" placeholder="name">
         <input id="form-email" type="email" class="input" placeholder="email">

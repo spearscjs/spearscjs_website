@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction</title>
-    <!-- Google Fonts Link for styling -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #f8f0f8; color: #333;">
+<body>
+    <header class="header">
+        <h1 class="title">Curtis Spears Website</h1>
+    </header>
 
-    <div style="text-align: center; background-color: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
-        <img src="catpic.png" alt="Cat" style="max-width: 250px; width: 100%; height: auto; border-radius: 15px; margin-bottom: 20px;">
-        <h1 style="font-family: 'Pacifico', cursive; font-size: 36px; color: #ff6f61; margin-top: 20px; margin-bottom: 10px;">Oops! This page does not exist!</h1>
-        <p style="font-size: 18px; color: #ff9a8b; margin-top: 10px; font-weight: 300;">But look at this cat 💖</p>
-        <a href="/" style="font-size: 18px; color: #ff6f61; text-decoration: none; font-weight: 600; margin-top: 20px; display: inline-block;">Return to Home</a>
-    </div>
+    <main>
+        <section class="error-section clear_section">
+            <img src="images/catpic.png" alt="Cat" class="error-image"/>
+            <h1 class="error-title">Oops! This page does not exist!</h1>
+            <p class="error-description">But look at this cat 💖</p>
+            <a href="/" class="error-link">Return to Home</a>
+        </section>
+    </main>
 
+    <footer class="footer">
+        <span id="cmd_out">(c) 2024 SpearsCJS. All rights reserved.</span>
+        <div class="cmd-prompt input-wrapper" id="commandDiv">
+            <span>C:\></span><input type="text" id="commandInput" class="input" placeholder="" autofocus><p>_</p>
+        </div>
+    </footer>
 </body>
 </html>

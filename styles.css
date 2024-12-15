@@ -20,7 +20,29 @@ ol {
 
 
 
+nav {
+  text-align: center;
+}
 
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.clear_section {
+  display: none;
+}
+
+
+
+#about {
+  display: block;
+}
+
+.persistant-section {
+  display: block;
+}
 
 section {
   margin-bottom: 5rem;
@@ -125,7 +147,6 @@ ul li {
 
 
 .contact-section {
-  display: inline-grid;
   padding: 1rem 1rem;
   border: 1px solid #66ff66;
   width: 100%;
