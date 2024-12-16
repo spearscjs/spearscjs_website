@@ -194,18 +194,21 @@ async function handleSubmit(event) {
 function switchSection(navElement) {
     // Get the ID of the clicked navbar element
     const navitems = document.querySelectorAll('nav a');
-    console.log(navitems);
     navitems.forEach(navitem => {
-        navitem.style.backgroundColor = "var(--background_color)";
-        navitem.style.color = "var(--accent_color)";
+        console.log(navitem);
+        console.log(navElement);
+        console.log(navitem == navElement)
+        if(navitem === navElement) {
+            navitem.style.backgroundColor = "var(--accent_color)";
+            navitem.style.color = "var(--background_color)";
+        }
+        else {
+            navitem.style.backgroundColor = "var(--background_color)";
+            navitem.style.color = "var(--accent_color)";
+            
+        }
     });
     
-    
-    
-    const sectionId = navElement.getAttribute('data-section');
-  
-    
-
     // Hide all sections
     const sections = document.querySelectorAll('.clear-section');
     sections.forEach(section => {
@@ -213,10 +216,8 @@ function switchSection(navElement) {
     });
 
     // Switch on the sectionId to determine which section to show
+    const sectionId = navElement.getAttribute('data-section');
     document.getElementById(sectionId).style.display = 'block';
-    // update active tab
-    navElement.style.backgroundColor = "var(--accent_color)";
-    navElement.style.color = "var(--background_color)";
 
 }
 
