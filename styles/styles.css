@@ -17,6 +17,7 @@ body {
 }
 
 main {
+  padding-top: 5%;
   padding-bottom: 10%;
   overflow: hidden;
 }
@@ -182,6 +183,20 @@ footer {
   box-sizing: border-box;
   position: fixed; /* Make it fixed at the bottom */
   bottom: 0; /* Align it to the bottom of the screen */
+  width: inherit; /* Ensure it spans the width of the screen */
+  background-color: var(--background_color); /* Match the background */
+  color: var(--accent_color); /* Text color */
+  z-index: 9999; /* Ensure it appears above other content */
+}
+
+
+header {
+  border-top: 3px solid var(--accent_color);
+  display: block;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  position: fixed; /* Make it fixed at the bottom */
+  top: 0; /* Align it to the bottom of the screen */
   width: inherit; /* Ensure it spans the width of the screen */
   background-color: var(--background_color); /* Match the background */
   color: var(--accent_color); /* Text color */
