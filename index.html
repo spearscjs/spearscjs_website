@@ -25,7 +25,7 @@
     <!-- ABOUT SECTION --------------------------------------------------------------------------------------->
     <section id = "about_section" class="clear-section">
         <h1>HI!</h1>
-        <img id="portrait" src="images/handsome_squidward.png" alt="Portrait Pic" loading="lazy" />
+        <img id="portrait" src="images/handsome_squidward.png" alt="Portrait Pic" loading="lazy"/>
         <p>I like coding and sh</p>
     </section>
 
@@ -191,7 +191,7 @@
         <textarea id="form-message" type="text" class="input" placeholder="message"></textarea>
         <button id="submit-contact" class="submit">submit</button>
         <div id="recaptcha-container"></div>
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        <script src="https://www.google.com/recaptcha/api.js?onload=onReCAPTCHALoadCallback&render=explicit"
                 async defer>
         </script>
     </section>
@@ -206,15 +206,6 @@
 
 <!-- SCRIPTS --------------------------------------------------------------------------------------------------->
 <script src="./scripts/script.js"></script>
-<script type="text/javascript">
-    var onloadCallback = function() {
-        grecaptcha.render('recaptcha-container', {
-            'sitekey' : '6LfGPZsqAAAAAAi6-3qjt2M0w3fdZ35yB_ffC-aI',
-            'theme': 'dark'
-        });
-    };
-</script>
-
-
+<script src="./scripts/contact-form.js"></script>
 </body>
 </html>
