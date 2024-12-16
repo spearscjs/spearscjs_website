@@ -1,17 +1,30 @@
 /* Basic MS-DOS Theme */
+:root {
+  --background_color: #081b2e;
+  --accent_color: #b8cabf;
+  --text_color: #f5ffca;
+  --body_font: Open Sans, monospace;
+  --title_font: 'Sans Serif', 'Serif';
+}
+
 body {
-  background-color: black;
-  color: lime;
-  font-family: 'Courier New', Courier, monospace;
-  padding: 0;
-  font-size: 16px;
-  width: 80%;
+  background-color: var(--background_color);
+  color: var(--accent_color);
+  border: 3px solid var(--accent_color);
+  font-family: var(--body_font);
+  width: 90%;
   margin: auto;
-  border: 1px solid #66ff66;
+}
+
+main {
+  padding-bottom: 10%;
+  overflow: hidden;
 }
 
 h1 {
   text-align: center;
+  font-size: 2rem;
+  color: var(--text_color);
 }
 
 
@@ -27,15 +40,10 @@ nav ul {
   display: flex;
   justify-content: space-evenly; 
   padding: 0;
-  border-bottom: 1px solid #66ff66;
+  border-bottom: 3px solid var(--accent_color);
+  margin: 0;
 }
 
-
-
-
-.clear-section {
-  display: none;
-}
 
 
 
@@ -43,8 +51,8 @@ nav ul {
   display: block;
 }
 
-.persistant-section {
-  display: block;
+.clear-section {
+  display: none;
 }
 
 section {
@@ -53,8 +61,9 @@ section {
 
 
 h2 {
-  font-size: 20px;
-  color: yellow;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: var(--text_color);
 }
 
 .job-title {
@@ -62,22 +71,19 @@ h2 {
 }
 
 
-ul li {
-  margin-bottom: 5px;
-}
-
 
 .footer {
   text-align: left;
   padding-top: 20px;
-  color: #66ff66; /* Bright green text */
-  font-family: 'Courier New', Courier, monospace;
+  color: var(--accent_color); /* Bright green text */
+  font-family: var(--body_font);
 }
 
 .cmd-prompt {
   display: block;
 }
 
+/*
 /* This file should probably be cleaned up from
    this point down. Lots of potentially overlapping
    properties. */
@@ -92,12 +98,11 @@ ul li {
 .cmd-prompt input {
   outline: none;
   border: none;
-  width: 0; /* Initial width is zero as the input expands */
   background-color: inherit;
   color: inherit;
   border: none;
   caret-color: transparent;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--body_font);
 }
 
 .cmd-prompt p {
@@ -116,7 +121,7 @@ ul li {
 }
 
 #cmd_out {
-  border-top: 1px solid #66ff66;
+  border-top: 3px solid var(--accent_color);
   display: block;
   padding: 1rem;
   white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */
@@ -130,7 +135,8 @@ ul li {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: space-evenly;
+  justify-content: center;
+
 }
 
 
@@ -151,17 +157,50 @@ ul li {
 
 
 
+
+#contact_section input, textarea {
+  display: block;
+  background-color: var(--background_color);
+  color: var(--accent_color);
+  border: 3px solid var(--accent_color);
+
+}
+
+#contact_section button, 
+#contact_section a {
+  color: var(--background_color);
+  background-color: var(--accent_color);
+}
+
+
+
+
+footer {
+  border-top: 3px solid var(--accent_color);
+  display: block;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  position: fixed; /* Make it fixed at the bottom */
+  bottom: 0; /* Align it to the bottom of the screen */
+  width: inherit; /* Ensure it spans the width of the screen */
+  background-color: var(--background_color); /* Match the background */
+  color: var(--accent_color); /* Text color */
+  z-index: 9999; /* Ensure it appears above other content */
+}
+
+
+
+/*
+
 #contact_section {
-  padding: 1rem 1rem;
   grid-column-gap: 2rem;
   grid-row-gap: 1rem;
 }
 
 #contact_section input,
 #contact_section button {
-  font-family: 'Courier New', Courier, monospace;
-  padding: 1rem 1rem;
-  border: 1px solid #66ff66;
+  font-family: var(--body_font);
+  border: 3px solid var(--accent_color);
   width: auto;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -169,19 +208,19 @@ ul li {
 }
 
 #contact_section input {
-  background-color: black;
-  color: #66ff66
+  background-color: var(--background_color);
+  color: var(--accent_color)
 }
 
-#contact_section button{
-  color: black;
-  background-color: #66ff66
+#contact_section button, a {
+  color: var(--background_color);
+  background-color: var(--accent_color)
 }
 
 
 
 #contact_section input:focus {
-  border: 1px solid green;
+  border: 3px solid green;
 }
 
 #contact_section input {
@@ -191,18 +230,43 @@ ul li {
 #form-message {
   grid-row: 3;
   width: 80%;
+  display: block;
+  align-self: flex-end;
 }
 
 #submit-contact {
   grid-row: 4;
-  color: #66ff66;
+  color: var(--accent_color);
 }
 
 #submit-contact:hover {
   background-color: green;
-  border: 1px solid green;
+  border: 3px solid green;
 }
 
 #recaptcha-container {
   grid-row: 4;
 }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

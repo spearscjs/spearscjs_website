@@ -2,8 +2,8 @@
 let isClearActive = false;
 let default_cmd_out;
 
-const inputBox = document.getElementById("commandInput");
-const cmdDiv = document.getElementById("commandDiv");
+const inputBox = document.getElementById("command_input");
+const cmdDiv = document.getElementById("command_div");
 const submitButton = document.getElementById("submit-contact");
 
 // Function to handle the command input
@@ -15,9 +15,9 @@ inputBox.addEventListener("keydown", function (event) {
   }
   else {
     if (event.key === "Enter") {
-      const command = document.getElementById("commandInput").value.toLowerCase().trim();
+      const command = document.getElementById("command_input").value.toLowerCase().trim();
       processCommand(command);
-      document.getElementById("commandInput").value = '';  // Clear the input field
+      document.getElementById("command_input").value = '';  // Clear the input field
       autoResizeInput(); // Refresh text box size
       event.preventDefault(); // Prevent form submission or default Enter key behavior
     }
@@ -47,16 +47,16 @@ function processCommand(command) {
         clearScreen();
         break;
     case "about":
-        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
+        document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     case "skills":
-        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
+        document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     case "experience":
-        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
+        document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     case "contact":
-        document.querySelector(`.nav-item[data-section=${command}_section]`).click();
+        document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     default:
         commandPrompt.textContent = "Command not recognized";
@@ -143,7 +143,7 @@ async function handleSubmit(event) {
         let errors;
         const response = await fetch("http://localhost:3000/submit-form", {
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             method: "POST",
             body: JSON.stringify({"token" : reCAPTCHAResponse, "name": formName, "email": formEmail, "message": formMessage}),
@@ -193,8 +193,18 @@ async function handleSubmit(event) {
 
 function switchSection(navElement) {
     // Get the ID of the clicked navbar element
+    const navitems = document.querySelectorAll('nav a');
+    console.log(navitems);
+    navitems.forEach(navitem => {
+        navitem.style.backgroundColor = "var(--background_color)";
+        navitem.style.color = "var(--accent_color)";
+    });
+    
+    
+    
     const sectionId = navElement.getAttribute('data-section');
-    console.log(sectionId)
+  
+    
 
     // Hide all sections
     const sections = document.querySelectorAll('.clear-section');
@@ -204,6 +214,9 @@ function switchSection(navElement) {
 
     // Switch on the sectionId to determine which section to show
     document.getElementById(sectionId).style.display = 'block';
+    // update active tab
+    navElement.style.backgroundColor = "var(--accent_color)";
+    navElement.style.color = "var(--background_color)";
 
 }
 
