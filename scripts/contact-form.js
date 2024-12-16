@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("submit-contact").addEventListener("click", (event) => handleContactSubmit(event));
 })
 
+
 // reCAPTCHA callback -- specified in script tag
 var onReCAPTCHALoadCallback = function() {
     grecaptcha.render('recaptcha-container', {
@@ -23,9 +24,18 @@ async function handleContactSubmit(event) {
     }
     grecaptcha.reset();
 
+    const contactResponse = document.getElementById("contact-response");
     const nameInput = document.getElementById("form-name");
     const emailInput = document.getElementById("form-email");
     const messageInput = document.getElementById("form-message");
+
+    // Reset all classes/content
+    nameInput.labels[0].textContent = '\u00A0'; // Equivalent to &nbsp
+    emailInput.labels[0].textContent = '\u00A0';
+    messageInput.labels[0].textContent = '\u00A0';
+    if (nameInput.classList.contains("contact-error")) nameInput.classList.remove("contact-error");
+    if (emailInput.classList.contains("contact-error")) emailInput.classList.remove("contact-error");
+    if (messageInput.classList.contains("contact-error")) messageInput.classList.remove("contact-error");
 
     const formName = nameInput.value;
     const formEmail = emailInput.value;
@@ -45,28 +55,50 @@ async function handleContactSubmit(event) {
         errors = await response.json()
             .then(data => errors = data);
 
-
-        // TODO: add a better response to a submission
-
         if(response.status === 200) {
             if (errors.response === "success") {
                 nameInput.value = "";
                 emailInput.value = "";
                 messageInput.value = "";
-                // Reset colors to original green if they were changed
-                // GIVE SOME INDICATION OF A SENT MESSAGE
-                nameInput.style.border = "1px solid #66ff66";
-                emailInput.style.border = "1px solid #66ff66";
-                messageInput.style.border = "1px solid #66ff66";
+
+                contactResponse.classList.add("contact-success", "fade-out");
+                contactResponse.style.visibility = "visible";
+                contactResponse.textContent = "message sent!";
+                // Delay this until after the animation is finished
+                setTimeout(() => {
+                    contactResponse.classList.remove("contact-success", "fade-out");
+                    contactResponse.style.visibility = "hidden";
+                    contactResponse.textContent = "\u00A0";
+                }, 2500)
             } else {
-                if (errors.hasOwnProperty("name")) nameInput.style.border = "1px solid red";
-                if (errors.hasOwnProperty("email")) emailInput.style.border = "1px solid red";
-                if (errors.hasOwnProperty("message")) messageInput.style.border = "1px solid red";
+                for (const error in errors) {
+                    switch (error) {
+                        case "name": {
+                           nameInput.labels[0].textContent = errors[error];
+                           nameInput.classList.add("contact-error");
+                           break;
+                        }
+                        case "email": {
+                            emailInput.labels[0].textContent = errors[error];
+                            emailInput.classList.add("contact-error");
+                            break;
+                        }
+                        case "message": {
+                            messageInput.labels[0].textContent = errors[error];
+                            messageInput.classList.add("contact-error");
+                            break;
+                        }
+                    }
+                }
             }
         } else {
-            alert("Submission unsuccessful!");
+            contactResponse.classList.add("contact-error", "fade-out");
+            contactResponse.style.visibility = "visible";
+            contactResponse.textContent = "request rejected by server";
         }
     } catch (error) {
-        alert("Submission unsuccessful!");
+        contactResponse.classList.add("contact-error", "fade-out");
+        contactResponse.style.visibility = "visible";
+        contactResponse.textContent = "server unreachable";
     }
 }

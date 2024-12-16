@@ -10,16 +10,16 @@ function validateInput(request) {
     let errors = {};
 
     // Check for empty inputs
-    if (!name) errors.name = "Name field must not be empty";
-    if (!message) errors.message = "Message field must not be empty";
-    if (!email) errors.email = "Email field must not be empty";
+    if (!name) errors.name = "name field must not be empty";
+    if (!message) errors.message = "message field must not be empty";
+    if (!email) errors.email = "email field must not be empty";
     // Check for proper email format
-    else if(!validateEmail(email)) errors.email = "Email is invalid";
+    else if(!validateEmail(email)) errors.email = "email is invalid";
 
     // Check for character limits
-    if (name.length > 32) errors.name = "Name field must not exceed 32 characters";
-    if (message.length > 128) errors.message = "Message field must not exceed 128 characters";
-    if (email.length > 64) errors.email = "Email field must not exceed 64 characters";
+    if (name.length > 32) errors.name = "name field must not exceed 32 characters";
+    if (message.length > 128) errors.message = "message field must not exceed 128 characters";
+    if (email.length > 64) errors.email = "email field must not exceed 64 characters";
 
     return errors;
 }

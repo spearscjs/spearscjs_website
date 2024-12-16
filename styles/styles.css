@@ -3,6 +3,8 @@
   --background_color: #081b2e;
   --accent_color: #b8cabf;
   --text_color: #f5ffca;
+  --error_color: #ef0000;
+  --success_color: #00ff25;
   --body_font: Open Sans, monospace;
   --title_font: 'Sans Serif', 'Serif';
   --line-thickness: 3px;
@@ -42,8 +44,9 @@ header {
 
 
 
-
-
+.input {
+  font-family: var(--body_font);
+}
 
 h1 {
   text-align: center;
@@ -145,7 +148,7 @@ h2 {
   display: block;
   white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */
   word-wrap: break-word; /* Ensure long words break properly */
-  box-sizing: border-box; /* Include border in the elrement's total width/height */
+  box-sizing: border-box; /* Include border in the element's total width/height */
 }
 
 .skills-list {
@@ -175,12 +178,11 @@ h2 {
 }
 
 
-#contact_section input, textarea {
+#contact_section input, #contact_section textarea {
   display: block;
   background-color: var(--background_color);
   color: var(--accent_color);
   border: 1px solid var(--accent_color);
-
 }
 
 #contact_section button, 
@@ -189,7 +191,32 @@ h2 {
   background-color: var(--accent_color);
 }
 
+#contact-response {
+  visibility: hidden;
+  text-align: center;
+}
 
+.fade-out {
+  opacity: 0;
+  transition: opacity ease-out 1.5s;
+  transition-delay: 1s;
+}
+
+.contact-error {
+  color: var(--error_color);
+}
+
+#contact_section input.contact-error, #contact_section textarea.contact-error {
+  border: 1px solid var(--error_color) !important;
+}
+
+.contact-success {
+  color: var(--success_color) !important;
+}
+
+.contact-success input, .contact-success textarea {
+  border: 1px solid var(--success_color) !important;
+}
 
 footer {
   display: block;
