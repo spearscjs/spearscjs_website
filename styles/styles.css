@@ -5,7 +5,7 @@
   --text_color: #f5ffca;
   --body_font: Open Sans, monospace;
   --title_font: 'Sans Serif', 'Serif';
-  --line-thickness: 3rem;
+  --line-thickness: 3px;
 }
 
 body {
@@ -17,30 +17,31 @@ body {
 }
 
 
-
-
-
-.active-tab {
-  background-color: yellow !important;
-}
-
-
-
-header { 
-  border: 3px solid var(--accent_color);
-}
-
-
-
-
-
-
 main {
   margin-top: 10vh;
   margin-bottom: 10vh;
   overflow: hidden;
-  border: 3px solid var(--accent_color);
+  border: var(--line-thickness) solid var(--accent_color);
 }
+
+
+
+
+header {
+  border: var(--line-thickness) solid var(--accent_color);
+  display: block;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  position: fixed; /* Make it fixed at the bottom */
+  top: 0; /* Align it to the bottom of the screen */
+  width: inherit; /* Ensure it spans the width of the screen */
+  background-color: var(--background_color); /* Match the background */
+  color: var(--accent_color); /* Text color */
+  z-index: 9999; /* Ensure it appears above other content */
+}
+
+
+
 
 
 
@@ -63,7 +64,6 @@ nav ul {
   display: flex;
   justify-content: space-evenly; 
   padding: 0;
-  border-bottom: 3px solid var(--accent_color);
   margin: 0;
 }
 
@@ -153,21 +153,25 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
+  justify-content: space-evenly;
+  padding-left: 0;
 
 }
 
 .skills-list img {
   width: 150px;
   height: 150px;
-  display: block;
+ 
  
 }
 
 .skill-label {
   display: block;
   text-align: center;
-  margin-top: 1rem;
+}
+
+.skill-item {
+  padding: 1rem;
 }
 
 
@@ -175,7 +179,7 @@ h2 {
   display: block;
   background-color: var(--background_color);
   color: var(--accent_color);
-  border: 3px solid var(--accent_color);
+  border: 1px solid var(--accent_color);
 
 }
 
@@ -200,18 +204,7 @@ footer {
 }
 
 
-header {
-  border-top: 3px solid var(--accent_color);
-  display: block;
-  word-wrap: break-word;
-  box-sizing: border-box;
-  position: fixed; /* Make it fixed at the bottom */
-  top: 0; /* Align it to the bottom of the screen */
-  width: inherit; /* Ensure it spans the width of the screen */
-  background-color: var(--background_color); /* Match the background */
-  color: var(--accent_color); /* Text color */
-  z-index: 9999; /* Ensure it appears above other content */
-}
+
 
 
 
