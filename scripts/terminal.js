@@ -5,6 +5,19 @@ let default_cmd_out;
 const inputBox = document.getElementById("command_input");
 const cmdDiv = document.getElementById("command_div");
 
+
+// Add listener for any kind of input on input box
+inputBox.addEventListener("input", () => autoResizeInput());
+
+// Add listener that focuses the input box on clicking the command div
+cmdDiv.addEventListener("click", () => inputBox.focus());
+
+// On page load, show all content by default
+window.onload = function() {
+  default_cmd_out = document.querySelector("#cmd_out").textContent;
+}
+
+
 // Function to handle the command input
 inputBox.addEventListener("keydown", function (event) {
   // Ensure the input is only processed when the user presses "Enter"
@@ -25,11 +38,7 @@ inputBox.addEventListener("keydown", function (event) {
 });
 
 
-// Add listener for any kind of input on input box
-inputBox.addEventListener("input", () => autoResizeInput());
 
-// Add listener that focuses the input box on clicking the command div
-cmdDiv.addEventListener("click", () => inputBox.focus());
 
 // Function to process different commands
 function processCommand(command) {
@@ -93,10 +102,7 @@ function resetExperience() {
   isClearActive = false;
 }
 
-// On page load, show all content by default
-window.onload = function() {
-   default_cmd_out = document.querySelector("#cmd_out").textContent;
-}
+
 
 // Automatically resizes the input element to its contents
 // This should also be placed anywhere the script itself
@@ -120,17 +126,13 @@ function switchSection(navElement) {
     // Get the ID of the clicked navbar element
     const navitems = document.querySelectorAll('nav a');
     navitems.forEach(navitem => {
-        console.log(navitem);
-        console.log(navElement);
-        console.log(navitem == navElement)
         if(navitem === navElement) {
             navitem.style.backgroundColor = "var(--accent_color)";
             navitem.style.color = "var(--background_color)";
         }
         else {
             navitem.style.backgroundColor = "var(--background_color)";
-            navitem.style.color = "var(--accent_color)";
-            
+            navitem.style.color = "var(--accent_color)"; 
         }
     });
     
@@ -140,7 +142,7 @@ function switchSection(navElement) {
         section.style.display = 'none';
     });
 
-    // Switch on the sectionId to determine which section to show
+    // show section
     const sectionId = navElement.getAttribute('data-section');
     document.getElementById(sectionId).style.display = 'block';
 
