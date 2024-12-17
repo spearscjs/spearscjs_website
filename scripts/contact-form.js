@@ -15,16 +15,23 @@ var onReCAPTCHALoadCallback = function() {
 // Handler for the contact form submission
 async function handleContactSubmit(event) {
     event.preventDefault();
+    const contactResponse = document.getElementById("contact-response");
     // Fetch reCAPTCHA response
     const reCAPTCHAResponse = grecaptcha.getResponse();
     // Force captcha completion
     if (!reCAPTCHAResponse) {
-        alert("Please complete reCAPTCHA!");
+        contactResponse.classList.add("contact-error", "fade-out");
+        contactResponse.style.visibility = "visible";
+        contactResponse.textContent = "please complete reCAPTCHA";
+        setTimeout(() => {
+            contactResponse.classList.remove("contact-error", "fade-out");
+            contactResponse.style.visibility = "hidden";
+            contactResponse.textContent = "\u00A0";
+        }, 2500)
         return;
     }
     grecaptcha.reset();
 
-    const contactResponse = document.getElementById("contact-response");
     const nameInput = document.getElementById("form-name");
     const emailInput = document.getElementById("form-email");
     const messageInput = document.getElementById("form-message");
@@ -95,10 +102,20 @@ async function handleContactSubmit(event) {
             contactResponse.classList.add("contact-error", "fade-out");
             contactResponse.style.visibility = "visible";
             contactResponse.textContent = "request rejected by server";
+            setTimeout(() => {
+                contactResponse.classList.remove("contact-error", "fade-out");
+                contactResponse.style.visibility = "hidden";
+                contactResponse.textContent = "\u00A0";
+            }, 2500)
         }
     } catch (error) {
         contactResponse.classList.add("contact-error", "fade-out");
         contactResponse.style.visibility = "visible";
         contactResponse.textContent = "server unreachable";
+        setTimeout(() => {
+            contactResponse.classList.remove("contact-error", "fade-out");
+            contactResponse.style.visibility = "hidden";
+            contactResponse.textContent = "\u00A0";
+        }, 2500)
     }
 }
