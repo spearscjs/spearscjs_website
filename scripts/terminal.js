@@ -8,6 +8,8 @@ const cmdDiv = document.getElementById("command_div");
 
 // Add listener for any kind of input on input box
 inputBox.addEventListener("input", () => autoResizeInput());
+// Add listener for a selection change on input box
+inputBox.addEventListener("selectionchange", () => repositionCaret());
 
 // Add listener that focuses the input box on clicking the command div
 cmdDiv.addEventListener("click", () => inputBox.focus());
@@ -31,10 +33,10 @@ inputBox.addEventListener("keydown", function (event) {
       processCommand(command);
       document.getElementById("command_input").value = '';  // Clear the input field
       autoResizeInput(); // Refresh text box size
+      repositionCaret(); // Refresh caret position
       event.preventDefault(); // Prevent form submission or default Enter key behavior
     }
   }
-
 });
 
 
@@ -120,19 +122,25 @@ function autoResizeInput() {
     inputBox.style.width = inputLength + "ch";
 }
 
+// Dynamically changes the caret to be underlining the selected character
+function repositionCaret() {
+    const inputBoxWidth = inputBox.style.width.replace(/\D/g, ""); // .replace() removes non-numbers (the "ch" portion)
+    document.getElementById("terminal_caret").style.right = (inputBoxWidth - inputBox.selectionStart) + "ch";
+}
+
 // NAVBAR FUNCTIONALITY ***************************************************************************************
 
 function switchSection(navElement) {
     // Get the ID of the clicked navbar element
-    const navitems = document.querySelectorAll('nav a');
-    navitems.forEach(navitem => {
-        if(navitem === navElement) {
-            navitem.style.backgroundColor = "var(--accent_color)";
-            navitem.style.color = "var(--background_color)";
+    const navItems = document.querySelectorAll('nav a');
+    navItems.forEach(navItem => {
+        if(navItem === navElement) {
+            navItem.style.backgroundColor = "var(--accent_color)";
+            navItem.style.color = "var(--background_color)";
         }
         else {
-            navitem.style.backgroundColor = "var(--background_color)";
-            navitem.style.color = "var(--accent_color)"; 
+            navItem.style.backgroundColor = "var(--background_color)";
+            navItem.style.color = "var(--accent_color)";
         }
     });
     
