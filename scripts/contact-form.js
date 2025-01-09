@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // reCAPTCHA callback -- specified in script tag
 var onReCAPTCHALoadCallback = function() {
     grecaptcha.render('recaptcha-container', {
-        'sitekey' : '6LfGPZsqAAAAAAi6-3qjt2M0w3fdZ35yB_ffC-aI',
+        'sitekey' : '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
         'theme': 'dark'
     });
 };
@@ -50,8 +50,9 @@ async function handleContactSubmit(event) {
 
     try {
         // TODO: Important: this fetch needs to be changed to point to the actual website
+        // Currently, it's pointing to the local Apache test server
         let errors;
-        const response = await fetch("http://localhost:3000/submit-form", {
+        const response = await fetch("http://10.12.1.21/submit-form", {
             headers: {
                 "Content-Type": "application/json"
             },

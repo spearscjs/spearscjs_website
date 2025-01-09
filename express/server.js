@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require("fs");
 const cors = require('cors');
 const validator = require("./validator.js");
+const mailer = require("nodemailer");
 require('dotenv').config();
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 
@@ -48,7 +49,7 @@ app.post('/submit-form', async (req, res) => {
 
     const path = dir + dateString + ".txt";
 
-    const output = name + " (" + email + "): \n" + message;
+    const output = name + " (" + email + "): \n" + message + "\n User IP: " + req.socket.remoteAddress;
 
     fs.writeFile(path, output, function (err) {
         if (err) {
