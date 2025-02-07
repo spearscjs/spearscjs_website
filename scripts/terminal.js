@@ -4,6 +4,7 @@
 // Flag to track if clear is active
 let isClearActive = false;
 let default_cmd_out;
+let commands = ["help", "clear", "about", "experience", "contact"]
 
 const inputBox = document.getElementById("command_input");
 const cmdDiv = document.getElementById("command_div");
@@ -59,9 +60,6 @@ function processCommand(command) {
     case "about":
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
-    case "skills":
-        document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
-        break;
     case "experience":
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
@@ -69,15 +67,16 @@ function processCommand(command) {
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     default:
-        commandPrompt.textContent = "Command not recognized";
+        commandPrompt.textContent = `Command not recognized. Try ${commands}`
         break;
   }
 }
 
+
 // Display help instructions
 function displayHelp() {
   const commandPrompt = document.querySelector("#cmd_out");
-  commandPrompt.textContent = "Commands: help, clear, about, skills, experience, contact";
+  commandPrompt.textContent = command_list_str;
 }
 
 // Clear the screen content (but keep the terminal visible)
