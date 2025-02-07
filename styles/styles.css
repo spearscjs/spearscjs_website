@@ -62,8 +62,6 @@ ol {
 }
 
 
-
-
 nav ul {
   list-style-type: none;
   display: flex;
@@ -73,10 +71,13 @@ nav ul {
 }
 
 
-
-
 #about_section {
   display: block;
+}
+
+#about_section_nav {
+  background: var(--accent_color);
+  color: var(--background_color);
 }
 
 .clear-section {
@@ -189,7 +190,7 @@ footer {
 
 
 
-/*
+
 
 #contact_section {
   grid-column-gap: 2rem;
@@ -246,7 +247,7 @@ footer {
 #recaptcha-container {
   grid-row: 4;
 }
-*/
+
 
 
 

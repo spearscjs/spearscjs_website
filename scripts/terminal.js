@@ -1,3 +1,6 @@
+
+
+
 // Flag to track if clear is active
 let isClearActive = false;
 let default_cmd_out;
