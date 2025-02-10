@@ -25,10 +25,16 @@ main {
   margin-top: 10vh;
   margin-bottom: 10vh;
   overflow: hidden;
-  border: var(--line-thickness) solid var(--accent_color);
 }
 
-
+#main-container {
+  position: relative;
+  box-sizing: border-box;
+  border: var(--line-thickness) solid var(--accent_color);
+  height: 80vh; /* Set a relative height between the header and footer */
+  overflow: scroll; /* Forces the content to scroll within the container */
+  scrollbar-width: none; /* Hide scrollbar */
+}
 
 
 header {
