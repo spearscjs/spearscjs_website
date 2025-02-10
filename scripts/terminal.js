@@ -1,6 +1,3 @@
-
-
-
 // Flag to track if clear is active
 let isClearActive = false;
 let default_cmd_out;
@@ -67,7 +64,7 @@ function processCommand(command) {
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     default:
-        commandPrompt.textContent = `Command not recognized. Try ${commands}`
+        commandPrompt.textContent = `Command not recognized. Try ` + commands.join(", ");
         break;
   }
 }
@@ -76,7 +73,7 @@ function processCommand(command) {
 // Display help instructions
 function displayHelp() {
   const commandPrompt = document.querySelector("#cmd_out");
-  commandPrompt.textContent = command_list_str;
+  commandPrompt.textContent = commands.join(", ");
 }
 
 // Clear the screen content (but keep the terminal visible)
