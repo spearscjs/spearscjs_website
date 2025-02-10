@@ -26,6 +26,7 @@ main {
 }
 
 #main-container {
+  padding-top: 10vmin;
   position: relative;
   box-sizing: border-box;
   border: var(--line-thickness) solid var(--accent_color);
