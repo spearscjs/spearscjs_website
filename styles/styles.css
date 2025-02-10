@@ -22,8 +22,6 @@ body {
 
 
 main {
-  margin-top: 10vh;
-  margin-bottom: 10vh;
   overflow: hidden;
 }
 
@@ -31,7 +29,7 @@ main {
   position: relative;
   box-sizing: border-box;
   border: var(--line-thickness) solid var(--accent_color);
-  height: 80vh; /* Set a relative height between the header and footer */
+  height: 90vh; /* Set a relative height between the header and footer */
   overflow: scroll; /* Forces the content to scroll within the container */
   scrollbar-width: none; /* Hide scrollbar */
 }
@@ -50,7 +48,18 @@ header {
   z-index: 9999; /* Ensure it appears above other content */
 }
 
-
+footer {
+  display: block;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  padding-top: 1rem;
+  position: relative; /* Was originally fixed, changed to relative to prevent overlapping */
+  bottom: 0; /* Align it to the bottom of the screen */
+  width: inherit; /* Ensure it spans the width of the screen */
+  background-color: var(--background_color); /* Match the background */
+  color: var(--accent_color); /* Text color */
+  z-index: 9999; /* Ensure it appears above other content */
+}
 
 .input {
   font-family: var(--body_font);
@@ -178,23 +187,6 @@ h2 {
 .contact-success input, .contact-success textarea {
   border: 1px solid var(--success_color) !important;
 }
-
-footer {
-  display: block;
-  word-wrap: break-word;
-  box-sizing: border-box;
-  position: fixed; /* Make it fixed at the bottom */
-  bottom: 0; /* Align it to the bottom of the screen */
-  width: inherit; /* Ensure it spans the width of the screen */
-  background-color: var(--background_color); /* Match the background */
-  color: var(--accent_color); /* Text color */
-  z-index: 9999; /* Ensure it appears above other content */
-}
-
-
-
-
-
 
 /*
 
