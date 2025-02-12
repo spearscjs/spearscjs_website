@@ -16,37 +16,45 @@ body {
   background-color: var(--background_color);
   color: var(--accent_color);
   font-family: var(--body_font);
-  width: 80vw;
-  margin: auto;
+ /* overflow-x: hidden;*/
 }
 
 
 main {
-  overflow: hidden;
+  /*overflow: hidden;*/
+  overflow: auto;
 }
 
 #main-container {
-  padding-top: 10vmin;
+  /*padding-top: 10vmin;*/
   position: relative;
   box-sizing: border-box;
   border: var(--line-thickness) solid var(--accent_color);
-  height: 90vh; /* Set a relative height between the header and footer */
-  overflow: scroll; /* Forces the content to scroll within the container */
+  width: 100%;
+  height: 100%; /* Set a relative height between the header and footer */
+  /*overflow: scroll; /* Forces the content to scroll within the container */
   scrollbar-width: none; /* Hide scrollbar */
 }
 
 
-header {
+header, #navbar {
   border: var(--line-thickness) solid var(--accent_color);
   display: block;
   word-wrap: break-word;
-  box-sizing: border-box;
-  position: fixed; /* Make it fixed at the bottom */
+  /*box-sizing: border-box;
+  position: relative; /* Make it fixed at the bottom */
   top: 0; /* Align it to the bottom of the screen */
-  width: inherit; /* Ensure it spans the width of the screen */
+  width: 100%; /* Ensure it spans the width of the screen */
   background-color: var(--background_color); /* Match the background */
   color: var(--accent_color); /* Text color */
   z-index: 9999; /* Ensure it appears above other content */
+}
+
+header {
+}
+
+#navbar {
+  position: sticky;
 }
 
 footer {
@@ -56,7 +64,7 @@ footer {
   padding-top: 1rem;
   position: relative; /* Was originally fixed, changed to relative to prevent overlapping */
   bottom: 0; /* Align it to the bottom of the screen */
-  width: inherit; /* Ensure it spans the width of the screen */
+  width: 100%; /* Ensure it spans the width of the screen */
   background-color: var(--background_color); /* Match the background */
   color: var(--accent_color); /* Text color */
   z-index: 9999; /* Ensure it appears above other content */
@@ -81,9 +89,10 @@ ol {
 nav ul {
   list-style-type: none;
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
+  /*
   padding: 0;
-  margin: 0;
+  margin: 0;*/
 }
 
 
