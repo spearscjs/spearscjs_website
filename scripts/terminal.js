@@ -5,6 +5,8 @@ let commands = ["help", "clear", "about", "experience", "contact"]
 
 const inputBox = document.getElementById("command_input");
 const cmdDiv = document.getElementById("command_div");
+const terminalWrapper = document.getElementById("terminal-wrapper");
+const footerButton = document.getElementById("footer-tab");
 
 
 // Add listener for any kind of input on input box
@@ -13,7 +15,10 @@ inputBox.addEventListener("input", () => autoResizeInput());
 inputBox.addEventListener("selectionchange", () => repositionCaret());
 
 // Add listener that focuses the input box on clicking the command div
-cmdDiv.addEventListener("click", () => inputBox.focus());
+terminalWrapper.addEventListener("click", () => inputBox.focus());
+
+// Add listener on pull-up tab
+footerButton.addEventListener("click", () => openTerminal());
 
 // On page load, show all content by default
 window.onload = function() {
@@ -153,5 +158,18 @@ function switchSection(navElement) {
     const sectionId = navElement.getAttribute('data-section');
     document.getElementById(sectionId).style.display = 'block';
 
+}
+
+function openTerminal() {
+    console.log(terminalWrapper.height);
+    if(terminalWrapper.style.height === "" || terminalWrapper.style.height === "0px") {
+        terminalWrapper.style.height = "100vh";
+        footerButton.style.transform = "rotate(180deg) translateY(-100%)";
+        inputBox.focus();
+    }
+    else {
+        terminalWrapper.style.height = "0";
+        footerButton.style.transform = "";
+    }
 }
 

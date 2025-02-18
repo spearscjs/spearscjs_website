@@ -1,49 +1,80 @@
-
 .cmd-prompt {
     display: block;
   }
   
-  /*
-  /* This file should probably be cleaned up from
-     this point down. Lots of potentially overlapping
-     properties. */
+.cmd-prompt span,
+.cmd-prompt input,
+.cmd-prompt p {
+  display: inline-block; /* Aligns the elements side by side */
+  font-size: 1rem;
+}
   
-  .cmd-prompt span,
-  .cmd-prompt input,
-  .cmd-prompt p {
-    display: inline-block; /* Aligns the elements side by side */
-    font-size: 1rem;
+.cmd-prompt input {
+  outline: none;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  caret-color: transparent;
+  font-family: var(--body_font);
+}
+  
+.cmd-prompt p {
+  position: relative;
+  animation: blinker 1s linear infinite;
+  border: none;
+}
+  
+@keyframes blinker {
+  51%,100% {
+    opacity: 1;
   }
-  
-  .cmd-prompt input {
-    outline: none;
-    border: none;
-    background-color: inherit;
-    color: inherit;
-    border: none;
-    caret-color: transparent;
-    font-family: var(--body_font);
+  0%,50% {
+    opacity: 0;
   }
+}
+
+#cmd-div {
+  height: 100%;
+}
   
-  .cmd-prompt p {
-    position: relative;
-    animation: blinker 1s linear infinite;
-    border: none;
-  }
-  
-  @keyframes blinker {
-    51%,100% {
-      opacity: 1;
-    }
-    0%,50% {
-      opacity: 0;
-    }
-  }
-  
-  #cmd_out {
-    display: block;
-    white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */
-    word-wrap: break-word; /* Ensure long words break properly */
-    box-sizing: border-box; /* Include border in the element's total width/height */
-  }
-  
+#cmd_out {
+  display: block;
+  white-space: pre-wrap; /* Preserve white spaces and allow text to wrap */
+  word-wrap: break-word; /* Ensure long words break properly */
+  box-sizing: border-box; /* Include border in the element's total width/height */
+}
+
+#footer-wrapper {
+  text-align: center;
+}
+
+#footer-tab {
+  display: inline-block;
+  border-radius: 5px 5px 0 0;
+  background-color: #1e1f22;
+  margin: auto;
+  width: 7vw;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out;
+  user-select: none;
+}
+
+#footer-tab:hover {
+  background-color: #2b2d30;
+}
+
+#footer-tab > img {
+  width: 8%;
+  height: 8%;
+}
+
+#footer-tab-up {
+  border-radius: 5px 5px 0 0;
+  background-color: #1e1f22;
+}
+
+#terminal-wrapper {
+  height: 0;
+  transition: all .5s ease-in-out;
+}
