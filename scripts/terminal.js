@@ -7,7 +7,9 @@ const inputBox = document.getElementById("command_input");
 const cmdDiv = document.getElementById("command_div");
 const terminalWrapper = document.getElementById("terminal-wrapper");
 const footerButton = document.getElementById("footer-tab");
+const commandPrompt = document.querySelector("#cmd_out");
 
+// Event listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Add listener for any kind of input on input box
 inputBox.addEventListener("input", () => autoResizeInput());
@@ -35,7 +37,7 @@ inputBox.addEventListener("keydown", function (event) {
   }
   else {
     if (event.key === "Enter") {
-      const command = document.getElementById("command_input").value.toLowerCase().trim();
+      const command = document.getElementById("command_input").value;
       processCommand(command);
       document.getElementById("command_input").value = '';  // Clear the input field
       autoResizeInput(); // Refresh text box size
@@ -45,31 +47,61 @@ inputBox.addEventListener("keydown", function (event) {
   }
 });
 
+// NAVBAR FUNCTIONALITY ***************************************************************************************
 
+function switchSection(navElement) {
+    // Get the ID of the clicked navbar element
+    const navItems = document.querySelectorAll('nav a');
+    navItems.forEach(navItem => {
+        if(navItem === navElement) {
+            navItem.style.backgroundColor = "var(--accent_color)";
+            navItem.style.color = "var(--background_color)";
+        }
+        else {
+            navItem.style.backgroundColor = "var(--background_color)";
+            navItem.style.color = "var(--accent_color)";
+        }
+    });
 
+    // Hide all sections
+    const sections = document.querySelectorAll('.clear-section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
 
+    // show section
+    const sectionId = navElement.getAttribute('data-section');
+    document.getElementById(sectionId).style.display = 'block';
+
+}
+
+// Terminal functionality ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// TODO: Update command handling to display on terminal, bash-style
 // Function to process different commands
 function processCommand(command) {
-  const commandPrompt = document.querySelector("#cmd_out");
-  console.log(command)
-  switch (command) {
+  commandPrompt.innerHTML += commandPrompt.innerHTML ? "<br>" : ""; // Only add line break if string is not empty
+  commandPrompt.innerHTML += "guest@spearscjs-website:~$ " + document.getElementById("command_input").value;
+  switch (command.toLowerCase().trim()) {
     case "help":
         displayHelp();
         break;
     case "clear":
-        clearScreen();
+        //clearScreen();
+        commandPrompt.innerHTML = "";
         break;
     case "about":
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     case "experience":
-        document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
+
         break;
     case "contact":
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
+    case "":
+        break;
     default:
-        commandPrompt.textContent = `Command not recognized. Try ` + commands.join(", ");
+        commandPrompt.innerHTML += `<br>-bash: `+ command + ": command not found. try " + commands.join(", ");
         break;
   }
 }
@@ -78,7 +110,7 @@ function processCommand(command) {
 // Display help instructions
 function displayHelp() {
   const commandPrompt = document.querySelector("#cmd_out");
-  commandPrompt.textContent = commands.join(", ");
+  commandPrompt.innerHTML += "<br>" + commands.join("<br>");
 }
 
 // Clear the screen content (but keep the terminal visible)
@@ -130,34 +162,6 @@ function autoResizeInput() {
 function repositionCaret() {
     const inputBoxWidth = inputBox.style.width.replace(/\D/g, ""); // .replace() removes non-numbers (the "ch" portion)
     document.getElementById("terminal_caret").style.right = (inputBoxWidth - inputBox.selectionStart) + "ch";
-}
-
-// NAVBAR FUNCTIONALITY ***************************************************************************************
-
-function switchSection(navElement) {
-    // Get the ID of the clicked navbar element
-    const navItems = document.querySelectorAll('nav a');
-    navItems.forEach(navItem => {
-        if(navItem === navElement) {
-            navItem.style.backgroundColor = "var(--accent_color)";
-            navItem.style.color = "var(--background_color)";
-        }
-        else {
-            navItem.style.backgroundColor = "var(--background_color)";
-            navItem.style.color = "var(--accent_color)";
-        }
-    });
-    
-    // Hide all sections
-    const sections = document.querySelectorAll('.clear-section');
-    sections.forEach(section => {
-        section.style.display = 'none';
-    });
-
-    // show section
-    const sectionId = navElement.getAttribute('data-section');
-    document.getElementById(sectionId).style.display = 'block';
-
 }
 
 function openTerminal() {
