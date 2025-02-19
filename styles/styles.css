@@ -21,7 +21,7 @@ html {
 body {
   background-color: var(--background_color);
   color: var(--accent_color);
-  font-family: var(--body_font);
+  font-family: var(--body_font), serif;
   margin: 0;
 }
 
@@ -76,8 +76,12 @@ footer {
   background-color: var(--terminal_color); /* Match the background */
 }
 
+.terminal-job-heading {
+  color: var(--terminal_text);
+}
+
 .input {
-  font-family: var(--body_font);
+  font-family: var(--body_font), serif;
 }
 
 h1 {
@@ -132,7 +136,7 @@ h2 {
 
 .footer {
   color: var(--accent_color); /* Bright green text */
-  font-family: var(--body_font);
+  font-family: var(--body_font), serif;
 }
 
 .skills-list {

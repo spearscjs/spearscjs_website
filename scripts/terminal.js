@@ -86,14 +86,13 @@ function processCommand(command) {
         displayHelp();
         break;
     case "clear":
-        //clearScreen();
         commandPrompt.innerHTML = "";
         break;
     case "about":
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
         break;
     case "experience":
-
+        displayExperience();
         break;
     case "contact":
         document.querySelector(`.nav-item a[data-section=${command}_section]`).click();
@@ -109,24 +108,17 @@ function processCommand(command) {
 
 // Display help instructions
 function displayHelp() {
-  const commandPrompt = document.querySelector("#cmd_out");
   commandPrompt.innerHTML += "<br>" + commands.join("<br>");
 }
 
-// Clear the screen content (but keep the terminal visible)
-function clearScreen() {
-  // Hide sections
-  const sections = document.querySelectorAll('.clear-section');
-  sections.forEach(section => {
-      section.style.display = 'none';
-  });
-  // Update prompt
-  const commandPrompt = document.querySelector("#cmd_out");
-  commandPrompt.textContent = "Press any key to continue.";
-  
-  // Set flag to true after clear is executed
-  isClearActive = true;
-
+function displayExperience() {
+    const jobEntries = document.querySelectorAll(".job-entry");
+    jobEntries.forEach(entry => {
+        let companyNameHeading = '<h2 class="terminal-job-heading">' + entry.getElementsByTagName("h2")[0].textContent + '</h2>';
+        let jobTitle = '<p class="terminal-job-title">' + entry.getElementsByTagName("p")[0].textContent + '</p>';
+        let jobDetails = '<ul class="terminal-job-details">' + entry.getElementsByTagName("ul")[0].innerHTML + '</ul>';
+        commandPrompt.innerHTML += "<br>" + companyNameHeading + jobTitle + jobDetails;
+    })
 }
 
 // Reset page when reloading to show all content
@@ -165,7 +157,6 @@ function repositionCaret() {
 }
 
 function openTerminal() {
-    console.log(terminalWrapper.height);
     if(terminalWrapper.style.height === "" || terminalWrapper.style.height === "0px") {
         terminalWrapper.style.height = "100vh";
         footerButton.style.transform = "rotate(180deg) translateY(-100%)";

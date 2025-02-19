@@ -15,9 +15,8 @@
   border: none;
   background-color: inherit;
   color: inherit;
-  border: none;
   caret-color: transparent;
-  font-family: var(--body_font);
+  font-family: var(--body_font), serif;
 }
   
 .cmd-prompt p {
@@ -79,3 +78,24 @@
   height: 0;
   transition: all .5s ease-in-out;
 }
+
+.terminal-job-heading,
+.terminal-job-title,
+.terminal-job-details {
+  margin: 0;
+}
+
+.terminal-job-heading {
+  font-size: 1.1rem;
+  padding: 0;
+}
+
+.terminal-job-details li {
+  margin-top: -2rem;
+}
+
+ul.terminal-job-details {
+  margin-bottom: -2rem;
+}
+
+
