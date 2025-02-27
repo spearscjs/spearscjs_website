@@ -51,7 +51,7 @@ async function handleContactSubmit(event) {
     try {
         // TODO: Important: this fetch needs to be changed to point to the actual website
         let errors;
-        const response = await fetch("http://localhost:3000/submit-form", {
+        const response = await fetch("https://spearscjs.nasnet.dev/submit-form", {
             headers: {
                 "Content-Type": "application/json"
             },
